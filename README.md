@@ -7,7 +7,7 @@ I'm learning Django and interested to integrate the [Inertia.js](https://inertia
 1. Create python environment
 
 ```bash
-  python -m venv .venv
+  uv -m venv .venv
 ```
 
 2. Activate the environment
@@ -21,13 +21,13 @@ I'm learning Django and interested to integrate the [Inertia.js](https://inertia
 - Windows
 
 ```bash
-  env\Scripts\activate.bat
+  .venv\Scripts\activate.bat
 ```
 
 3. Install the required modules
 
 ```bash
-  pip install -r requirements.txt
+  uv sync
 ```
 
 4. copy .env.example and adjust it
@@ -49,5 +49,5 @@ I'm learning Django and interested to integrate the [Inertia.js](https://inertia
 6. Start the server
 
 ```bash
-python manage.py runserver
+uv run manage.py runserver
 ```
