@@ -132,6 +132,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Where ViteJS assets are built.
 DJANGO_VITE_ASSETS_PATH = BASE_DIR / "assets"
+DJANGO_VITE_DEV_MODE = os.getenv("DJANGO_VITE_DEV_MODE", default="True") == "True"
 DJANGO_VITE_DEV_SERVER_PORT = os.getenv("DJANGO_VITE_DEV_SERVER_PORT", default=5174)
 
 # Path to ViteJS manifest.json file.
