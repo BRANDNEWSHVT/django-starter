@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import React, { useCallback } from 'react';
+import { Link } from '@inertiajs/react'
 
 interface HomeProps {
   title?: string;
@@ -11,7 +12,7 @@ const Home: React.FC<HomeProps> = ({ title }) => {
   }, []);
 
   return (
-    <section className="grid place-items-center h-[100dvh]">
+    <section className="grid place-items-center h-dvh">
       <div className="px-4 max-w-3xl sm:px-6 lg:px-8">
         <h1>{title}</h1>
         <ul>
@@ -34,6 +35,9 @@ const Home: React.FC<HomeProps> = ({ title }) => {
           >
             View components
           </Button>
+          <Link href="/todos" as={Button} className="cursor-pointer">
+            View todos
+          </Link>
         </div>
       </div>
     </section>
