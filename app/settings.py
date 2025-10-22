@@ -143,7 +143,6 @@ DJANGO_VITE = {
         "dev_server_port": os.getenv("DJANGO_VITE_DEV_SERVER_PORT", default=5173),
     }
 }
-# DJANGO_VITE_DEV_MODE = os.getenv("DJANGO_VITE_DEV_MODE", default=False) == "True"
 DJANGO_VITE_DEV_MODE = DEBUG
 
 # Where ViteJS assets are built.
