@@ -30,7 +30,7 @@ SECRET_KEY = "django-insecure-o=x7b#o+hssmh=(_04wpt4ij@28pe%zy53i=t&hy8b#du$c&$#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("APP_DEBUG", default=True) == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]"]
 
 # Application definition
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -142,7 +143,8 @@ DJANGO_VITE = {
         "dev_server_port": os.getenv("DJANGO_VITE_DEV_SERVER_PORT", default=5173),
     }
 }
-DJANGO_VITE_DEV_MODE = os.getenv("DJANGO_VITE_DEV_MODE", default=False)
+# DJANGO_VITE_DEV_MODE = os.getenv("DJANGO_VITE_DEV_MODE", default=False) == "True"
+DJANGO_VITE_DEV_MODE = DEBUG
 
 # Where ViteJS assets are built.
 DJANGO_VITE_ASSETS_PATH = BASE_DIR / "assets" / "dist"
