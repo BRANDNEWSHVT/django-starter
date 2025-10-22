@@ -131,22 +131,26 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Where ViteJS assets are built.
-DJANGO_VITE_ASSETS_PATH = BASE_DIR / "assets"
-DJANGO_VITE_DEV_MODE = os.getenv("DJANGO_VITE_DEV_MODE", default="True") == "True"
-DJANGO_VITE_DEV_SERVER_PORT = os.getenv("DJANGO_VITE_DEV_SERVER_PORT", default=5174)
+# django-vite settings
+# If using HMR (hot module replacement)
+DJANGO_VITE = {
+    "default": {
+        "dev_mode": DEBUG,
+        "dev_server_host": os.getenv(
+            "DJANGO_VITE_DEV_SERVER_HOST", default="localhost"
+        ),
+        "dev_server_port": os.getenv("DJANGO_VITE_DEV_SERVER_PORT", default=5173),
+    }
+}
+DJANGO_VITE_DEV_MODE = os.getenv("DJANGO_VITE_DEV_MODE", default=False)
 
-# Path to ViteJS manifest.json file.
-DJANGO_VITE_MANIFEST_PATH = DJANGO_VITE_ASSETS_PATH / "dist" / "manifest.json"
-
-# Name of static files folder (after called python manage.py collectstatic)
-STATIC_ROOT = BASE_DIR / "static"
+# Where ViteJS assets are built.
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "assets" / "dist"
 
 # Include DJANGO_VITE_ASSETS_PATH into STATICFILES_DIRS to be copied inside
 # when run command python manage.py collectstatic
-STATICFILES_DIRS = [
-    DJANGO_VITE_ASSETS_PATH,
-    DJANGO_VITE_ASSETS_PATH / "dist",
-]
+STATICFILES_DIRS = [DJANGO_VITE_ASSETS_PATH]
+STATIC_ROOT = BASE_DIR / "static"
 
 # Inertia layout filename
 INERTIA_LAYOUT = "base.html"
